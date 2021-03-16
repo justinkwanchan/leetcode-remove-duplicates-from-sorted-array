@@ -1,19 +1,17 @@
 const removeDuplicates = array => {
   let repeatCount = 0;
 
-  for (let i = 0; i < array.length; i++) {
-    if (i !== 0) {
-      if (array[i] === array[i - 1]) {
-        repeatCount++;
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] === array[i - 1]) {
+      repeatCount++;
 
-        if (i === array.length - 1) {
-          array.splice(i - repeatCount, repeatCount);
-        }
-      } else if (repeatCount > 0) {
+      if (i === array.length - 1) {
         array.splice(i - repeatCount, repeatCount);
-        i = i - repeatCount;
-        repeatCount = 0;
       }
+    } else if (repeatCount > 0) {
+      array.splice(i - repeatCount, repeatCount);
+      i = i - repeatCount;
+      repeatCount = 0;
     }
   }
 
