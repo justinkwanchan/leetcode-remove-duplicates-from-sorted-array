@@ -1,28 +1,31 @@
-const removeDuplicates = array => {
+const removeDuplicates = nums => {
   let repeatCount = 0;
 
-  for (let i = 1; i < array.length; i++) {
-    if (array[i] === array[i - 1]) {
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] === nums[i - 1]) {
       repeatCount++;
 
-      if (i === array.length - 1) {
-        array.splice(i - repeatCount, repeatCount);
+      if (i === nums.length - 1) {
+        nums.splice(i - repeatCount, repeatCount);
       }
     } else if (repeatCount > 0) {
-      array.splice(i - repeatCount, repeatCount);
+      nums.splice(i - repeatCount, repeatCount);
       i = i - repeatCount;
       repeatCount = 0;
     }
   }
 
-  return array;
+  return nums.length;
 };
 
 const nums1 = [1, 1, 2];
 const nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4, 4, 4, 4];
 
-console.log(`Array 1: ${removeDuplicates(nums1)}`);
-console.log(`Array 2: ${removeDuplicates(nums2)}`);
+removeDuplicates(nums1);
+removeDuplicates(nums2);
+
+console.log(`${nums1.length}, nums = [${nums1}]`);
+console.log(`${nums2.length}, nums = [${nums2}]`);
 
 /* Sample input code */
 
