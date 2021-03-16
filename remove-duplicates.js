@@ -5,9 +5,14 @@ const removeDuplicates = array => {
     if (i !== 0) {
       if (array[i] === array[i - 1]) {
         repeatCount++;
+
+        if (i === array.length - 1) {
+          array.splice(i - repeatCount, repeatCount);
+        }
       } else if (repeatCount > 0) {
-        array.splice(i - repeatCount + 1, repeatCount);
-        i = i - repeatCount + 1;
+        array.splice(i - repeatCount, repeatCount);
+        i = i - repeatCount;
+        repeatCount = 0;
       }
     }
   }
@@ -16,7 +21,7 @@ const removeDuplicates = array => {
 };
 
 const nums1 = [1, 1, 2];
-const nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+const nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4, 4, 4, 4];
 
 console.log(`Array 1: ${removeDuplicates(nums1)}`);
 console.log(`Array 2: ${removeDuplicates(nums2)}`);
